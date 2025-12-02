@@ -8,6 +8,7 @@ Combination lock, find number of times landing on and passing through 0
 ## Day 2: Gift Shop
 Finding repeating sequences in a string
 - [Python](src/Day_02.py)
+- [Bash/awk](bash/day_02.sh)
 
 
 
