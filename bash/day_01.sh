@@ -14,6 +14,4 @@ cat "input.txt" | tr 'L' '-' | tr 'R' '+' | tee >(
         } else if (n < 0) {
             for (i = 0; i < -n; i++) print -1
         }
-    }' | (
-        echo Part 2: "$(count_zeros)" > /dev/tty
-    )
+    }' | echo Part 2: "$(count_zeros)" > /dev/tty
