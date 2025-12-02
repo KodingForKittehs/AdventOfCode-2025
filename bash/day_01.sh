@@ -7,10 +7,6 @@ count_zeros() {
 cat "input.txt" | tr 'L' '-' | tr 'R' '+' | tee >(
     echo Part 1: "$(count_zeros)" > /dev/tty
 ) | awk '{
-    n = $1
-    if (n > 0) {
-        for (i = 0; i < n; i++) print 1
-    } else if (n < 0) {
-        for (i = 0; i < -n; i++) print -1
-    }
+    d = $1 > 0 ? 1 : -1
+    for (i = 0; i < d * $1; i++) print d
 }' | echo Part 2: "$(count_zeros)" > /dev/tty
