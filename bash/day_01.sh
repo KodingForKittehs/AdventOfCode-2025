@@ -5,7 +5,7 @@ count_zeros() {
 }
 
 cat "input.txt" | tr 'L' '-' | tr 'R' '+' | tee >(
-    echo "Part 1:", $(count_zeros) >&2
+    echo Part 1: "$(count_zeros)" > /dev/tty
 ) | \
     awk '{
         n = $1
@@ -15,5 +15,5 @@ cat "input.txt" | tr 'L' '-' | tr 'R' '+' | tee >(
             for (i = 0; i < -n; i++) print -1
         }
     }' | (
-        echo "Part 2:", $(count_zeros)
+        echo Part 2: "$(count_zeros)" > /dev/tty
     )
