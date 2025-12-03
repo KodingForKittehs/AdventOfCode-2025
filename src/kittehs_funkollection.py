@@ -54,6 +54,7 @@ def find_sublist(lst, sublst):
     return -1
 
 def eat(file, split_on=None):
+    # Used to parse list of grids in a text file
     if split_on is None:
         return next(nom_file(file))
     return list(nom_file(file, split_on))

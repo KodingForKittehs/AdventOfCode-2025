@@ -10,5 +10,8 @@ Finding repeating sequences in a string
 - [Python](src/Day_02.py)
 - [Bash/awk](bash/day_02.sh)
 
+## Day 3: Lobby
+DP max sum of joltages in a list
+- [Python](src/Day_03.py)
 
 
