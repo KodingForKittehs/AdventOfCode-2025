@@ -3,7 +3,7 @@
 if [ -n "$1" ]; then
     SLEEP_INTERVAL=$1
 else
-    SLEEP_INTERVAL=0.1
+    SLEEP_INTERVAL=0.5
 fi
 
 WATCH_FILE="./work.sh"
@@ -22,11 +22,16 @@ LAST_MTIME=$(stat -c %Y "$WATCH_FILE" 2>/dev/null)
 # Run once at startup
 printf "#####  Running work.sh...  #####\n"
 ./work.sh
-printf "#####  Completed running work.sh  #####\n"
+printf "\nAwaiting further changes to $WATCH_FILE."
 
 # Check for changes in a loop
+LOOP_COUNT=0
 while true; do
     sleep $SLEEP_INTERVAL
+    LOOP_COUNT=$((LOOP_COUNT + 1))
+    if [ $((LOOP_COUNT % 10)) -eq 0 ]; then
+        printf "."
+    fi
     
     CURRENT_MTIME=$(stat -c %Y "$WATCH_FILE" 2>/dev/null)
     
@@ -37,7 +42,7 @@ while true; do
         if [ $EXIT_CODE -ne 0 ]; then
             printf "Error: work.sh exited with code $EXIT_CODE\n"
         fi
-        printf "\nAwaiting further changes to $WATCH_FILE...\n"
+        printf "\nAwaiting further changes to $WATCH_FILE."
 
         LAST_MTIME=$CURRENT_MTIME
     fi

@@ -1,7 +1,4 @@
 #!/bin/bash
+set -e
 
-printf "Work in progress...\n"
-sleep 1
-printf "Work completed 3.\n"
-
-
+printf "Work script started.\n"
