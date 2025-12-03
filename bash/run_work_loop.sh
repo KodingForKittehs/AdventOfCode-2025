@@ -3,7 +3,7 @@
 if [ -n "$1" ]; then
     SLEEP_INTERVAL=$1
 else
-    SLEEP_INTERVAL=1
+    SLEEP_INTERVAL=0.1
 fi
 
 WATCH_FILE="./work.sh"
@@ -31,9 +31,9 @@ while true; do
     CURRENT_MTIME=$(stat -c %Y "$WATCH_FILE" 2>/dev/null)
     
     if [ "$CURRENT_MTIME" != "$LAST_MTIME" ]; then
-        printf "\n#####  Change detected! Running work.sh...  #####\n"
+        printf "\n"
         ./work.sh
-        printf "#####  Completed running work.sh  #####\n"
+        printf "\n"
         LAST_MTIME=$CURRENT_MTIME
     fi
 done
