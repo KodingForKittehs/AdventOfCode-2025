@@ -33,7 +33,12 @@ while true; do
     if [ "$CURRENT_MTIME" != "$LAST_MTIME" ]; then
         printf "\n"
         ./work.sh
-        printf "\n"
+        EXIT_CODE=$?
+        if [ $EXIT_CODE -ne 0 ]; then
+            printf "Error: work.sh exited with code $EXIT_CODE\n"
+        fi
+        printf "\nAwaiting further changes to $WATCH_FILE...\n"
+
         LAST_MTIME=$CURRENT_MTIME
     fi
 done
